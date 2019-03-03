@@ -13,7 +13,7 @@ public class Light_Destroy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Destroy(gameObject, 13);
+       Destroy(gameObject, 4);
     }
 
 
@@ -21,7 +21,7 @@ public class Light_Destroy : MonoBehaviour
     {
         if (collision.gameObject.tag == "Bullet1")
         {
-            Destroy(gameObject , 3);
+          //  Destroy(gameObject  );
             Destroy(collision.gameObject);
         }
     }

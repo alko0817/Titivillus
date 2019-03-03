@@ -19,8 +19,8 @@ public class Enemy_new : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Destroy(gameObject, 25);
-        transform.Rotate(new Vector3(0, 90, 0) * Time.deltaTime * 2);
+        Destroy(gameObject, 12);
+      //  transform.Rotate(new Vector3(0, 90, 0) * Time.deltaTime * 2);
         Set_score();
         
        // t1.text = "Score is :" + Score_number;

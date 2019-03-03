@@ -60,9 +60,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\AUDIO\AudioManager.cs" />
+    <Compile Include="Assets\AUDIO\sound.cs" />
+    <Compile Include="Assets\beem_position.cs" />
+    <Compile Include="Assets\beem_script.cs" />
     <Compile Include="Assets\Bullet_position_spawn.cs" />
     <Compile Include="Assets\Destroy_bullet2.cs" />
     <Compile Include="Assets\Light_Destroy.cs" />
+    <Compile Include="Assets\NewBehaviourScript.cs" />
+    <Compile Include="Assets\outbound.cs" />
+    <Compile Include="Assets\people_movemetn.cs" />
+    <Compile Include="Assets\people_script.cs" />
     <Compile Include="Assets\Score_Script.cs" />
     <Compile Include="Assets\Score_text_script.cs" />
     <Compile Include="Assets\Script\Alians1.cs" />
@@ -94,6 +102,8 @@
     <Compile Include="Assets\Script\Weapons3Following.cs" />
     <Compile Include="Assets\Text_kill.cs" />
     <Compile Include="Assets\Text_Score.cs" />
+    <Compile Include="Assets\touch_beem_stop.cs" />
+    <Compile Include="Assets\try_p2_istrigger.cs" />
     <Reference Include="Cinemachine">
       <HintPath>C:/Users/Alex/OneDrive - Uppsala universitet/school/GD 2. GALACTIC PARTY POOPING/Grandpa (2)/Library/ScriptAssemblies/Cinemachine.dll</HintPath>
     </Reference>

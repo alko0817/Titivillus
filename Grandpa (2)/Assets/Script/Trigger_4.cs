@@ -21,12 +21,9 @@ public class Trigger_4 : MonoBehaviour
 
 
 
-
-    public void OnCollisionEnter2D(Collision2D other)
+    public void OnTriggerEnter2D(Collider2D other)
     {
-
-
-        if (other.gameObject.tag == "Ufo")
+        if (other.gameObject.tag == "Beem")
         {
 
             // if (count_wait_for_spawn_ufo > 20)

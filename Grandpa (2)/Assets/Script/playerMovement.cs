@@ -7,16 +7,19 @@ public class playerMovement : MonoBehaviour
 
 
 
-    public float playerSpeed = 2.0f;
+    public float playerSpeed = 1000f;
     public float speed;
     private Rigidbody2D rb;
     private Vector2 moveVelocity;
     public static float bulletCounter = 0;
     public Rigidbody2D bullet;
+    public Rigidbody2D rigidbody2D;
     public Rigidbody2D bullet2;
     public bool left_true = false;
     public bool right_true = false;
     public float scale = 0;
+    public float cooldownTime = 10;
+    private float nextcooldownTime = 0;
 
 
 
@@ -28,10 +31,12 @@ public class playerMovement : MonoBehaviour
     IEnumerator PowerUpTimer()
     {
         yield return new WaitForSeconds(5);
-        speed = 5;
+        playerSpeed = 2.0f;
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+  
+
+        void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Enemy") && speed > 5)
         {
@@ -54,13 +59,27 @@ public class playerMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.D))
         {
             transform.localScale = new Vector2(scale , scale);
+            
         }
 
-        if (Input.GetKey("right"))
+        if (Time.time > nextcooldownTime)
+        {
+            if (Input.GetKeyUp(KeyCode.Alpha1))
+            {
+                playerSpeed = 4.0f;
+                StartCoroutine("PowerUpTimer");
+                nextcooldownTime = Time.time + cooldownTime;
+            }
+        }
+
+
+
+            if (Input.GetKey("right"))
         {
 
 
             right_true = true;
+             
             transform.localScale = new Vector2(scale, scale);
 
 
@@ -111,13 +130,16 @@ public class playerMovement : MonoBehaviour
                     }
                     */
       
-
-
+        // make speed slowly
+        if (Text_Score.Score == 4)
+        {
+              
+        }
 
 
 
     }
-        public void FixedUpdate()
+         void FixedUpdate()
         {
             rb.MovePosition(rb.position + moveVelocity * Time.fixedDeltaTime);
         }

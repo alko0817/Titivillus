@@ -31,11 +31,11 @@ public class Is_Trigger : MonoBehaviour
  
         // transform.Rotate(new Vector3(0, 90, 0) * Time.deltaTime * 1);
     }
-    public void OnCollisionEnter2D(Collision2D other)
+    public void OnTriggerEnter2D(Collider2D other)
     {
+         
 
-
-        if (other.gameObject.tag == "Ufo")
+            if (other.gameObject.tag == "Beem")
         {
             count_wait_for_spawn_ufo += 1;
 
