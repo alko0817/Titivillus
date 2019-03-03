@@ -51,6 +51,17 @@ public class EnemyKiller : MonoBehaviour
 
 
 
+
+
+
+
+        if (other.gameObject.tag == "Beem")
+        {
+            Destroy( gameObject);
+
+ 
+        }
+
     }
 
     

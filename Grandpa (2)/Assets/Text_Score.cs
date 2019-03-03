@@ -11,13 +11,13 @@ public class Text_Score : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        t_score.text = "Score" + Score.ToString() ;
+        t_score.text = "Family" + Score.ToString() ;
     }
 
     // Update is called once per frame
     void Update()
     {
-        t_score.text = "Score :" + Score.ToString();
+        t_score.text = "Family :" + Score.ToString();
 
     }
 }

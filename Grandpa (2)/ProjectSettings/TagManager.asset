@@ -31,6 +31,14 @@ TagManager:
   - spawn_enemy_position_4
   - spawn_enemy_position_5
   - spawn_enemy_position_6
+  - Beem
+  - player_
+  - f_solution6
+  - Wall
+  - beem_position6
+  - f_solution
+  - player2
+  - Beem_position
   layers:
   - Default
   - TransparentFX
@@ -65,6 +73,27 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: RandomShit
+    uniqueID: 1358917795
+    locked: 0
+  - name: Background
+    uniqueID: 120934351
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Player
+    uniqueID: 1767399297
+    locked: 0
+  - name: Enemies
+    uniqueID: 3259521935
+    locked: 0
+  - name: Ufos
+    uniqueID: 3958257079
+    locked: 0
+  - name: Members
+    uniqueID: 835597009
+    locked: 0
+  - name: Foreground
+    uniqueID: 1568846831
     locked: 0

@@ -26,18 +26,15 @@ public class Trigger_2 : MonoBehaviour
 
 
 
-    public void OnCollisionEnter2D(Collision2D other)
+    public void OnTriggerEnter2D(Collider2D other)
     {
-
-
-        if (other.gameObject.tag == "Ufo")
+        if (other.gameObject.tag == "Beem")
         {
- 
             // if (count_wait_for_spawn_ufo > 20)
             // {  
 
             // Text_Score.Score -= 1;
- 
+
             Destroy(gameObject);
             Destroy(other.gameObject);
             Destroy(r2.gameObject);

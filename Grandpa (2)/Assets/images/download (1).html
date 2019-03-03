@@ -1,0 +1,1315 @@
+
+        <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+ <meta property="og:title" content="Krissi Ekmans" />
+ <meta property="og:url" content="http://krissiekmans.blogg.se/" />
+ <meta property="og:image" content="http://cdn3.cdnme.se/1627688/8-3/dsc_0379_58a988fbe087c327b2c7c1cd.jpg" />
+ <meta property="og:image:secure_url" content="https://cdn3.cdnme.se/1627688/8-3/dsc_0379_58a988fbe087c327b2c7c1cd.jpg" />
+ <meta property="og:image" content="http://cdn2.cdnme.se/1627688/8-3/hamnar_58a98847ddf2b33d9c8a8e5b.jpg" />
+ <meta property="og:image:secure_url" content="https://cdn2.cdnme.se/1627688/8-3/hamnar_58a98847ddf2b33d9c8a8e5b.jpg" />
+ <meta property='article:author' content='https://www.facebook.com/Krissi Ekman' />
+ <meta property='article:publisher' content='https://www.facebook.com/Krissi Ekman' />
+<base target="_top">
+ <title>Krissi Ekmans - </title>
+ <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+ <meta name="generator" content="http://publishme.se/" />
+ <link rel="stylesheet" href="/style.css" type="text/css" />
+ <link rel="alternate" href="/index.rss" type="application/rss+xml" title="RSS 2.0" />
+ <script type="text/javascript" src="https://static.blogg.se/public/js/script_blogg.js"></script>
+ <script type="text/javascript" src="https://static.blogg.se/shared/js/script.js"></script>
+<script src='//static.blogg.se/shared/js/api.js'></script>
+<script type="text/javascript" src="https://aka-cdn.adtech.de/dt/common/DAC.js"></script>
+<script>
+ ADTECH.config.page = {
+ protocol: 'https',
+ server: 'adserver.adtech.de',
+ network: '1568.1',
+ siteid: '910036',
+ params: {loc: '100'}
+ };
+
+ (function () {
+
+ var loopAdsLoaded = 0;
+ var adCodes = [{"cu_mobile": 6547025, "mobile_size": "2804", "desktop_size": "2127", "name": "content1", "cu": 6547027}, {"cu_mobile": 6547028, "mobile_size": "2804", "desktop_size": "2127", "name": "content2", "cu": 6547026}, {"cu_mobile": 6547024, "mobile_size": "2804", "desktop_size": "2649", "name": "panorama", "cu": 6547030}];
+
+ function setAd(ad, ad_div){
+ var size, cu;
+ var adId = 'ad-loop-' + loopAdsLoaded;
+
+ var adData = $.grep(adCodes, function (e) {
+ return e.name === ad
+ })[0];
+
+ if (document.documentElement.clientWidth < 500) {
+ cu = adData.cu_mobile;
+ size = adData.mobile_size;
+ }
+ else {
+ cu = adData.cu;
+ size = adData.desktop_size;
+ }
+
+ // TODO: If it is mobile 2 and mobile 3, att some height to allow scroll
+ var minHeight;
+ if (ad.indexOf('mobile') >= 0 || ad.indexOf('content') >= 0) {
+ minHeight = '250px';
+ }
+ $(ad_div).attr('id', adId)
+ .data('cu', cu)
+ .data('size', size)
+ .css('min-height', minHeight)
+ .addClass('ready');
+ }
+
+ function loadAds() {
+ $('.ad.loop:not(.loaded):not(.ready)').each(function (_, ad_div) {
+ switch (loopAdsLoaded){
+ case 0:
+ setAd('content1', ad_div);
+ break;
+ default:
+ setAd('content2', ad_div);
+ }
+ loopAdsLoaded++;
+ });
+ lazyLoadAds();
+ }
+
+ window.loadAds = loadAds;
+
+ var w = $(window);
+
+ var lastKnownScrollOffset = w.scrollTop();
+ var lastLazyLoadAdsCall = new Date();
+ var animFrameLazyLoadAds;
+
+ function _lazyLoadAdsAction (e) {
+ var now = new Date();
+ var timeDeltaMS = now - lastLazyLoadAdsCall
+ lastLazyLoadAdsCall = now;
+
+ var t = w.scrollTop();
+ var scrollDelta = t - lastKnownScrollOffset;
+ var h = window.innerHeight;
+
+ var scrollSpeed = scrollDelta / timeDeltaMS * 1000 // pixels/sec
+
+ $('.ad.ready:not(.loaded)').each(function () {
+ var ad = $(this);
+ var top = ad.offset()['top'];
+
+ // If we are scrolling quicker than 80 pixels/s and within three screens
+ // then load ad immediately
+ var predicTop = t + h + (scrollSpeed > 80 ? scrollSpeed : 80);
+ var threshold = t + 3 * h
+ if (top <= predicTop && top <= threshold) {
+ ad.addClass('loaded');
+ var cu = ad.data('cu');
+ if (cu) {
+ ADTECH.config.placements[cu] = {
+ adContainerId: ad.attr('id'),
+ sizeid: ad.data('size'),
+ params: {alias: '', target: '_blank'}
+ };
+ ad.removeData('cu');
+ ad.removeData('size');
+ ADTECH.loadAd(parseInt(cu));
+ }
+ }
+ });
+ lastKnownScrollOffset = t;
+ animFrameLazyLoadAds = undefined;
+ }
+
+ function lazyLoadAds(e) {
+ // Schedule lazy load
+ if (!animFrameLazyLoadAds) {
+ animFrameLazyLoadAds = requestAnimationFrame(function () { _lazyLoadAdsAction(e) })
+ }
+ }
+
+ w.scroll(lazyLoadAds);
+ w.resize(lazyLoadAds);
+
+ })();
+
+</script>
+<style>
+ .ad {
+ display: flex;
+ justify-content: center;
+ }
+
+ body.with-panorama {
+ padding-top: 250px;
+ }
+ @media screen and (max-width: 500px) {
+ body.with-panorama {
+ padding-top: 350px;
+ }
+ }
+ #dfp-ad-panorama
+ {
+ position: absolute;
+ top: 0;
+ overflow-x: hidden;
+ width: 100%;
+ left: 0;
+ }
+ body.sticky_panorama #dfp-ad-panorama {
+ position: fixed;
+ max-width: 100% !important;
+ width: 100%;
+
+ z-index: 1000;
+ }
+ #dfp-ad-tws{
+ position: -webkit-sticky;
+ position: sticky;
+ top: 20px;
+ }
+ #dfp-ad-tws .ad{
+ overflow-x: hidden;
+ }
+ @media screen and (max-width: 500px){
+ #dfp-ad-tws{
+ display: none;
+ }
+ }
+
+</style>
+</head>
+
+<body><div id="cookiebar" class="cookie-bar">
+    <div class="cookie-container">
+        <div class="cookie-text">Som besökare på <span id="cookie-domain"></span> samtycker du till användandet av s.k.
+            <a href="http://nyheter24gruppen.se/integritetspolicy/" rel="nofollow">cookies</a>
+            för att förbättra din upplevelse hos oss.</div>
+        <button class="button-cookie-bar">Ok, ta bort denna ruta</button>
+    </div>
+</div>
+
+
+<script>
+    if (localStorage.getItem('cookies_accepted')){
+      $('#cookiebar').remove()
+    }
+    var remove_bar = function () {
+        localStorage.setItem('cookies_accepted', 'true');
+        $('#cookiebar').remove();
+    };
+    $('.button-cookie-bar').on('click touchstart', remove_bar);
+    $('#cookie-domain').html(window.host);
+</script>
+<style>
+    .cookie-container
+    {
+        padding: 20px;
+        flex-direction: row;
+        flex-wrap: wrap;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .cookie-text
+    {
+        text-align: center;
+    }
+    .cookie-bar
+    {
+        width: 100%;
+        background-color: #e3e3e3;
+        color: black;
+        justify-content: center;
+        position: fixed;
+        display: flex;
+        bottom: 0px;
+        z-index: 9999999999;
+        left: 0px;
+        font-size: 12px;
+        font-weight: 600;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .button-cookie-bar {
+        border: 0;
+        color: white;
+        background: black;
+        -webkit-border-radius: 5;
+        -moz-border-radius: 5;
+        border-radius: 5px;
+        padding: 5px 10px;
+        font-size: 12px;
+        font-weight: 600;
+        margin: 10px;
+        font-family: Arial, Helvetica, sans-serif;
+        text-decoration: none;
+    }
+
+</style><div id="ad-fullscreen" class="ad loaded"></div>
+<script>
+  if (document.documentElement.clientWidth < 500) {
+    ADTECH.config.placements[6547023] = {
+      adContainerId: 'ad-fullscreen',
+      sizeid: '16',
+      params: {alias: '', target: '_blank'}
+    };
+     if (sessionStorage.getItem('show_fullscreen')) {
+        ADTECH.loadAd(6547023)
+      }
+      sessionStorage.setItem('show_fullscreen', 'true');
+  } else {
+    ADTECH.config.placements[6547020] = {
+      adContainerId: 'ad-fullscreen',
+      sizeid: '16',
+      params: {alias: '', target: '_blank'}
+    };
+    ADTECH.loadAd(6547020)
+  }
+</script>
+
+        <script type="text/javascript">
+            function getCookie(cname) {
+                var name = cname + "=";
+                var ca = document.cookie.split(';');
+                for(var i = 0; i <ca.length; i++) {
+                    var c = ca[i];
+                    while (c.charAt(0)==' ') {
+                        c = c.substring(1);
+                    }
+                    if (c.indexOf(name) == 0) {
+                        return c.substring(name.length,c.length);
+                    }
+                }
+                return "";
+            }
+            dfp_tokens = getCookie('nuggdfp');
+            if (dfp_tokens != "") {
+                var ret = {};
+                data = dfp_tokens.split("c");
+                var val = "";
+                var i = 0;
+                for (i in data) {
+                    val = data[i];
+                    val = val.split("d");
+                    ret["a"+val[0]] = val[1];
+                }
+
+                nuggdfp = ret;
+                console.log("nuggdfp", nuggdfp);
+            }
+        </script>
+        
+<div id="dfp-ad-panorama" >
+<div class="ad loaded" id="ad-panorama"></div>
+    <script>
+    $('body').addClass('with-panorama');
+
+    if (document.documentElement.clientWidth < 500) {
+    ADTECH.config.placements[6547024] = {
+      adContainerId: "ad-panorama",
+      sizeid: '2804',
+      params: {alias: '', target: '_blank'}
+    };
+    ADTECH.loadAd(6547024)
+  } else {
+    ADTECH.config.placements[6547030] = {
+      adContainerId: "ad-panorama",
+      sizeid: '2649' ,
+      params: {alias: '', target: '_blank'}
+    };
+    ADTECH.loadAd(6547030)
+  }
+
+    var body = document.getElementsByTagName('body')[0];
+        body.className = body.className ? body.className + ' sticky_panorama' : 'sticky_panorama';
+
+        setTimeout(function() {
+            body.className = body.className.replace("sticky_panorama", "");
+        }, 5000)
+    </script>
+</div>
+
+
+<div id="wrapper">
+
+ <div id="header">
+  <h1><a href="http://krissiekmans.blogg.se/">Krissi Ekmans</a></h1>
+  <h2></h2>
+ </div>
+
+
+ <div id="side">
+
+  <div class="nav">
+  <ul>
+    <li><a href="/index.html" title="Gå till startsidan"><strong>Till bloggens startsida</strong></a></li>
+  </ul>
+  <div class="navheader">Sök i bloggen</div>
+  <form action="http://www.google.se/search" name="search" method="get">
+    <input type="text" name="q" value="" size="12" maxlength="64" />
+    <input type="hidden" name="sitesearch" value="http://krissiekmans.blogg.se/" />
+    <input type="submit" value="Sök" />
+  </form>
+   <div class="navheader">Senaste inläggen</div>
+   <ul>
+       
+         <li><a href="/2017/february/frisyr.html">Frisyr</a></li>
+       
+         <li><a href="/2017/january/planeringen-av-semestern-ar-gjord.html">Planeringen av semestern är gjord</a></li>
+       
+         <li><a href="/2017/january/inte-mycket-gjort.html">Inte mycket gjort</a></li>
+       
+         <li><a href="/2017/january/julen-akte-ut.html">Julen åkte ut</a></li>
+       
+         <li><a href="/2017/january/fredag-den-13de-och-tillval.html">Fredag den 13de och tillval.</a></li>
+       
+         <li><a href="/2017/january/picasso.html">Picasso</a></li>
+       
+         <li><a href="/2017/january/skolstart-ogonlakare.html">Skolstart + ögonläkare</a></li>
+       
+         <li><a href="/2017/january/lara-elicia-vika.html">Lära Elicia vika</a></li>
+       
+         <li><a href="/2017/january/fjarilar-och-rosetter.html">Fjärilar och rosetter</a></li>
+       
+         <li><a href="/2017/january/godmorgon-eller-gomiddag-kanske.html">Godmorgon eller gomiddag kanske!</a></li>
+       
+         <li><a href="/2017/january/skumbad.html">Skumbad</a></li>
+       
+         <li><a href="/2017/january/rusta-och-hem.html">Rusta och hem</a></li>
+       
+         <li><a href="/2017/january/sota-tindra.html">Söta Tindra</a></li>
+       
+         <li><a href="/2017/january/pa-vag-mot-strangnas.html">På väg mot Strängnäs</a></li>
+       
+         <li><a href="/2017/january/bakat-brod.html">Bakat bröd</a></li>
+       
+         <li><a href="/2017/january/packat-ner-granen.html">Packat ner granen</a></li>
+       
+         <li><a href="/2017/january/spelade.html">Spelade</a></li>
+       
+         <li><a href="/2017/january/kartonger.html">Kartonger</a></li>
+       
+         <li><a href="/2017/january/rak-och-avokadorora.html">Räk och avokadoröra</a></li>
+       
+         <li><a href="/2017/january/2016-ar-nu-slut-och-2017-ar-har.html">2016 är nu slut och 2017 är här</a></li>
+       
+   </ul>
+   <div class="navheader">Kategorier</div>
+   <ul>
+     
+        <li><a href="/category/blaljus-rattegangar-stora-nyheter.html">Blåljus, rättegångar. stora nyheter</a></li>
+       
+        <li><a href="/category/boktips.html">Boktips</a></li>
+       
+        <li><a href="/category/fakta-om-allt-mojligt.html">Fakta om allt möjligt</a></li>
+       
+        <li><a href="/category/foto.html">Foto!</a></li>
+       
+        <li><a href="/category/fotografera-manader.html">Fotografera (Månader)</a></li>
+       
+        <li><a href="/category/grattis.html">Grattis :)</a></li>
+       
+        <li><a href="/category/gastbloggareintervjuer.html">Gästbloggare/Intervjuer</a></li>
+       
+        <li><a href="/category/kalas.html">Kalas 🎉</a></li>
+       
+        <li><a href="/category/kalenderdagar-julkalender.html">Kalenderdagar (julkalender)</a></li>
+       
+        <li><a href="/category/listan.html">Listan</a></li>
+       
+        <li><a href="/category/livet-i-allmanhet.html">Livet i allmänhet</a></li>
+       
+        <li><a href="/category/melodifestivalen.html">Melodifestivalen</a></li>
+       
+        <li><a href="/category/mode.html">Mode</a></li>
+       
+        <li><a href="/category/naturutflykter.html">Naturutflykter</a></li>
+       
+        <li><a href="/category/pyssligt.html">Pyssligt</a></li>
+       
+        <li><a href="/category/recept.html">Recept</a></li>
+       
+        <li><a href="/category/renoveringen-av-nya-lagenheten-inflytt.html">Renoveringen av nya lägenheten & inflytt</a></li>
+       
+        <li><a href="/category/resor.html">Resor</a></li>
+       
+        <li><a href="/category/roligt.html">Roligt</a></li>
+       
+        <li><a href="/category/sorg-och-jobbigt.html">Sorg och jobbigt</a></li>
+       
+        <li><a href="/category/spel.html">Spel</a></li>
+       
+        <li><a href="/category/teater-d.html">Teater :D</a></li>
+       
+        <li><a href="/category/teckningar.html">Teckningar</a></li>
+       
+        <li><a href="/category/tips.html">Tips</a></li>
+       
+        <li><a href="/category/tomtenissen.html">Tomtenissen</a></li>
+       
+        <li><a href="/category/svar-pa-tal.html">svar på tal</a></li>
+       
+        <li><a href="/category/aterblickar.html">Återblickar</a></li>
+       
+   </ul>
+   <div class="navheader">Arkiv</div>
+   <ul>
+    
+     <li><a href="/2019/february/">Februari 2019</a></li>
+    
+     <li><a href="/2019/january/">Januari 2019</a></li>
+    
+     <li><a href="/2018/december/">December 2018</a></li>
+    
+     <li><a href="/2018/november/">November 2018</a></li>
+    
+     <li><a href="/2018/october/">Oktober 2018</a></li>
+    
+     <li><a href="/2018/september/">September 2018</a></li>
+    
+     <li><a href="/2018/august/">Augusti 2018</a></li>
+    
+     <li><a href="/2018/july/">Juli 2018</a></li>
+    
+     <li><a href="/2018/june/">Juni 2018</a></li>
+    
+     <li><a href="/2018/may/">Maj 2018</a></li>
+    
+     <li><a href="/2018/april/">April 2018</a></li>
+    
+     <li><a href="/2018/march/">Mars 2018</a></li>
+    
+     <li><a href="/2018/february/">Februari 2018</a></li>
+    
+     <li><a href="/2018/january/">Januari 2018</a></li>
+    
+     <li><a href="/2017/december/">December 2017</a></li>
+    
+     <li><a href="/2017/november/">November 2017</a></li>
+    
+     <li><a href="/2017/october/">Oktober 2017</a></li>
+    
+     <li><a href="/2017/september/">September 2017</a></li>
+    
+     <li><a href="/2017/august/">Augusti 2017</a></li>
+    
+     <li><a href="/2017/july/">Juli 2017</a></li>
+    
+     <li><a href="/2017/june/">Juni 2017</a></li>
+    
+     <li><a href="/2017/may/">Maj 2017</a></li>
+    
+     <li><a href="/2017/april/">April 2017</a></li>
+    
+     <li><a href="/2017/march/">Mars 2017</a></li>
+    
+     <li><a href="/2017/february/">Februari 2017</a></li>
+    
+     <li><a href="/2017/january/">Januari 2017</a></li>
+    
+     <li><a href="/2016/december/">December 2016</a></li>
+    
+     <li><a href="/2016/november/">November 2016</a></li>
+    
+     <li><a href="/2016/october/">Oktober 2016</a></li>
+    
+     <li><a href="/2016/september/">September 2016</a></li>
+    
+     <li><a href="/2016/august/">Augusti 2016</a></li>
+    
+     <li><a href="/2016/july/">Juli 2016</a></li>
+    
+     <li><a href="/2016/june/">Juni 2016</a></li>
+    
+     <li><a href="/2016/may/">Maj 2016</a></li>
+    
+     <li><a href="/2016/april/">April 2016</a></li>
+    
+     <li><a href="/2016/march/">Mars 2016</a></li>
+    
+     <li><a href="/2016/february/">Februari 2016</a></li>
+    
+     <li><a href="/2016/january/">Januari 2016</a></li>
+    
+     <li><a href="/2015/december/">December 2015</a></li>
+    
+     <li><a href="/2015/november/">November 2015</a></li>
+    
+     <li><a href="/2015/october/">Oktober 2015</a></li>
+    
+     <li><a href="/2015/september/">September 2015</a></li>
+    
+     <li><a href="/2015/august/">Augusti 2015</a></li>
+    
+     <li><a href="/2015/july/">Juli 2015</a></li>
+    
+     <li><a href="/2015/june/">Juni 2015</a></li>
+    
+     <li><a href="/2015/may/">Maj 2015</a></li>
+    
+     <li><a href="/2015/april/">April 2015</a></li>
+    
+     <li><a href="/2015/march/">Mars 2015</a></li>
+    
+     <li><a href="/2015/february/">Februari 2015</a></li>
+    
+     <li><a href="/2015/january/">Januari 2015</a></li>
+    
+     <li><a href="/2014/december/">December 2014</a></li>
+    
+     <li><a href="/2014/november/">November 2014</a></li>
+    
+     <li><a href="/2014/october/">Oktober 2014</a></li>
+    
+     <li><a href="/2014/september/">September 2014</a></li>
+    
+     <li><a href="/2014/august/">Augusti 2014</a></li>
+    
+     <li><a href="/2014/july/">Juli 2014</a></li>
+    
+     <li><a href="/2014/june/">Juni 2014</a></li>
+    
+     <li><a href="/2014/may/">Maj 2014</a></li>
+    
+     <li><a href="/2014/april/">April 2014</a></li>
+    
+     <li><a href="/2014/march/">Mars 2014</a></li>
+    
+     <li><a href="/2014/february/">Februari 2014</a></li>
+    
+     <li><a href="/2014/january/">Januari 2014</a></li>
+    
+     <li><a href="/2013/december/">December 2013</a></li>
+    
+     <li><a href="/2013/november/">November 2013</a></li>
+    
+     <li><a href="/2013/october/">Oktober 2013</a></li>
+    
+     <li><a href="/2013/september/">September 2013</a></li>
+    
+     <li><a href="/2013/august/">Augusti 2013</a></li>
+    
+     <li><a href="/2013/july/">Juli 2013</a></li>
+    
+     <li><a href="/2013/june/">Juni 2013</a></li>
+    
+     <li><a href="/2013/may/">Maj 2013</a></li>
+    
+     <li><a href="/2013/april/">April 2013</a></li>
+    
+     <li><a href="/2013/march/">Mars 2013</a></li>
+    
+     <li><a href="/2013/february/">Februari 2013</a></li>
+    
+     <li><a href="/2013/january/">Januari 2013</a></li>
+    
+     <li><a href="/2012/december/">December 2012</a></li>
+    
+     <li><a href="/2012/november/">November 2012</a></li>
+    
+     <li><a href="/2012/october/">Oktober 2012</a></li>
+    
+     <li><a href="/2012/september/">September 2012</a></li>
+    
+     <li><a href="/2012/august/">Augusti 2012</a></li>
+    
+     <li><a href="/2012/july/">Juli 2012</a></li>
+    
+     <li><a href="/2012/june/">Juni 2012</a></li>
+    
+     <li><a href="/2012/may/">Maj 2012</a></li>
+    
+     <li><a href="/2012/april/">April 2012</a></li>
+    
+     <li><a href="/2012/march/">Mars 2012</a></li>
+    
+     <li><a href="/2012/february/">Februari 2012</a></li>
+    
+     <li><a href="/2012/january/">Januari 2012</a></li>
+    
+     <li><a href="/2011/december/">December 2011</a></li>
+    
+     <li><a href="/2011/november/">November 2011</a></li>
+    
+     <li><a href="/2011/october/">Oktober 2011</a></li>
+    
+     <li><a href="/2011/september/">September 2011</a></li>
+    
+     <li><a href="/2011/august/">Augusti 2011</a></li>
+    
+     <li><a href="/2011/july/">Juli 2011</a></li>
+    
+     <li><a href="/2011/june/">Juni 2011</a></li>
+    
+     <li><a href="/2011/may/">Maj 2011</a></li>
+    
+     <li><a href="/2011/april/">April 2011</a></li>
+    
+     <li><a href="/2011/march/">Mars 2011</a></li>
+    
+     <li><a href="/2011/february/">Februari 2011</a></li>
+    
+     <li><a href="/2011/january/">Januari 2011</a></li>
+    
+     <li><a href="/2010/december/">December 2010</a></li>
+    
+     <li><a href="/2010/november/">November 2010</a></li>
+    
+     <li><a href="/2010/october/">Oktober 2010</a></li>
+    
+     <li><a href="/2010/september/">September 2010</a></li>
+    
+     <li><a href="/2010/august/">Augusti 2010</a></li>
+    
+     <li><a href="/2010/july/">Juli 2010</a></li>
+    
+     <li><a href="/2010/june/">Juni 2010</a></li>
+    
+     <li><a href="/2010/may/">Maj 2010</a></li>
+    
+     <li><a href="/2010/april/">April 2010</a></li>
+    
+     <li><a href="/2010/march/">Mars 2010</a></li>
+    
+     <li><a href="/2010/february/">Februari 2010</a></li>
+    
+     <li><a href="/2010/january/">Januari 2010</a></li>
+    
+   </ul>
+   
+   <div class="navheader">Länkar</div>
+   <ul>
+    
+     <li><a href="https://www.jenkler.se" rel="nofollow" title="">Datorhjälp</a></li>
+    
+     <li><a href="http://figgero.blogg.se" rel="nofollow" title="">Figge</a></li>
+    
+     <li><a href="http://krissis-bokvikning.blogspot.se/" rel="nofollow" title="">Krissis bokvikning</a></li>
+    
+     <li><a href="https://www.modekampanj.com" rel="nofollow" title="">Mode</a></li>
+    
+   </ul>
+   
+  </div>
+  
+  <div class="subside">
+    <a href="/index.rss" title="RSS"><img src="https://static.blogg.se/img/rss.gif" border="0" alt="RSS 2.0" /></a>
+  </div>
+
+ </div>
+
+ <div id="content">
+  
+   <a name="a58a98918ddf2b33d96c4d3fc"></a>
+   <h3>Frisyr</h3>
+   <div class="entrybody"><div>Elicia tyckte att kl 5 var en bra tid att gå upp för att fixa frisyren idag. </div>
+<div>Vilket inte jag tyckte. Tog mig ca 10-15 min att göra denna om ens det.</div>
+<div> </div>
+<div>
+<div><img src="https://cdn3.cdnme.se/1627688/8-3/dsc_0379_58a988fbe087c327b2c7c1cd.jpg" alt="" class="image" data-oid="58a988fbe087c327b2c7c1cd" /> <img src="https://cdn1.cdnme.se/1627688/8-3/dsc_0380_58a988ffddf2b3149466dceb.jpg" alt="" class="image" data-oid="58a988ffddf2b3149466dceb" /></div>
+<div>
+<div> </div>
+</div>
+</div></div>
+   <div class="entrymeta">
+    2017-01-23 @ 07:32:00
+    <a href="/2017/february/frisyr.html">Permalink</a>
+    <a href="http://krissiekmans.blogg.se/category/livet-i-allmanhet.html">Livet i allmänhet</a>
+    <a href="/2017/february/frisyr.html#comment">Kommentarer (0)</a>
+  <a href="/2017/february/frisyr.html#trackback">Trackbacks ()</a>
+  <br /><br />
+  
+    <a href="" rel="tag"></a>
+  
+   </div>
+   <hr class="separator" />
+  
+<div class="ad loop"></div>
+
+   <a name="a58a98887e087c36aa847562c"></a>
+   <h3>Planeringen av semestern är gjord</h3>
+   <div class="entrybody"><div>Vi har suttit och planerat vart våran semester ska bli ikväll. </div>
+<div> </div>
+<div>Elicia ville ju åka till typ Paris, Grekland eller något liknande. </div>
+<div>Men det har vi inte råd med i år. Det får bli senare.</div>
+<div> </div>
+<div>Men det blir en vecka på Gotland. Tillräckligt dyrt och passar vår semesterbudget. :) </div>
+<div>Så när lön kommer så kommer vi boka stuga och räkna ihop hur mycket pengar vi kan tänkas behöva. </div>
+<div>Vi får även med oss Monica på denna resa. :)</div>
+<div> </div>
+<div>
+<div><img src="https://cdn2.cdnme.se/1627688/8-3/hamnar_58a98847ddf2b33d9c8a8e5b.jpg" alt="" class="image" data-oid="58a98847ddf2b33d9c8a8e5b" /></div>
+<div> </div>
+<div>Vi kommer att hålla oss mellan typ Visby och uppåt på kartan. </div>
+<div>Det vi har kollat upp och planerat att göra kommer att bli awesome :)</div>
+</div></div>
+   <div class="entrymeta">
+    2017-01-16 @ 21:54:00
+    <a href="/2017/january/planeringen-av-semestern-ar-gjord.html">Permalink</a>
+    <a href="http://krissiekmans.blogg.se/category/resor.html">Resor</a>
+    <a href="/2017/january/planeringen-av-semestern-ar-gjord.html#comment">Kommentarer (0)</a>
+  <a href="/2017/january/planeringen-av-semestern-ar-gjord.html#trackback">Trackbacks ()</a>
+  <br /><br />
+  
+    <a href="" rel="tag"></a>
+  
+   </div>
+   <hr class="separator" />
+  
+<div class="ad loop"></div>
+
+   <a name="a5884f142e087c33ccd577c9c"></a>
+   <h3>Inte mycket gjort</h3>
+   <div class="entrybody"><div>Diskat, slappat, handlat, ja har inte gjort så mycket idag faktiskt. </div>
+<div>Snart dags för sängen.</div>
+<div>För imorn är det dags för skola igen. Engelska, Svenska och Matte. </div>
+<div> </div>
+<div>Godnatt :)</div></div>
+   <div class="entrymeta">
+    2017-01-15 @ 21:51:00
+    <a href="/2017/january/inte-mycket-gjort.html">Permalink</a>
+    <a href="http://krissiekmans.blogg.se/category/livet-i-allmanhet.html">Livet i allmänhet</a>
+    <a href="/2017/january/inte-mycket-gjort.html#comment">Kommentarer (0)</a>
+  <a href="/2017/january/inte-mycket-gjort.html#trackback">Trackbacks ()</a>
+  <br /><br />
+  
+    <a href="" rel="tag"></a>
+  
+   </div>
+   <hr class="separator" />
+  
+<div class="ad loop"></div>
+
+   <a name="a5884f0f0ddf2b36ed940d585"></a>
+   <h3>Julen åkte ut</h3>
+   <div class="entrybody"><div>Nu är nästan alla julsaker nerpackade. </div>
+<div>Bara stjärnan i köket och alla julgardiner kvar. </div>
+<div>Men det tar jag hand om senare. Möjligen att julstjärnan tar ner snarast. Så vi kan få ner alla julsaker i källaren. </div>
+<div>Gardinerna ska ju tvättas först och sedan läggs de in i gardinskåpet med andra gardiner. </div>
+<div> </div>
+<div> </div></div>
+   <div class="entrymeta">
+    2017-01-14 @ 18:50:00
+    <a href="/2017/january/julen-akte-ut.html">Permalink</a>
+    <a href="http://krissiekmans.blogg.se/category/livet-i-allmanhet.html">Livet i allmänhet</a>
+    <a href="/2017/january/julen-akte-ut.html#comment">Kommentarer (0)</a>
+  <a href="/2017/january/julen-akte-ut.html#trackback">Trackbacks ()</a>
+  <br /><br />
+  
+    <a href="" rel="tag"></a>
+  
+   </div>
+   <hr class="separator" />
+  
+<div class="ad loop"></div>
+
+   <a name="a5884f05c9606ee67d47fab47"></a>
+   <h3>Fredag den 13de och tillval.</h3>
+   <div class="entrybody"><div>Dagen började med att Elicia vaknat på fel sida. Hon var sur och grinig. Men på väg till skolan såg vi en katt och då blev hon plötsligt glad. </div>
+<div> </div>
+<div>Jag åkte till skolan och skoldagen började med ett grupparbete. </div>
+<div>Sedan var det välkomnande i aulan. Efter fikat hade vi en genomgång om tillval. </div>
+<div>Jag visste ju redan vad jag skulle välja, men följde med iallafall på rundvandringen. </div>
+<div>Efter vi valt slutade vi. </div>
+<div> </div>
+<div>Så nu sitter jag på bussen påväg hem. </div>
+<div> </div>
+<div><img src="http://www.tijuanthedon.com/wp-content/uploads/2015/11/noder.jpg" alt="Bildresultat för musik" /></div></div>
+   <div class="entrymeta">
+    2017-01-13 @ 12:15:00
+    <a href="/2017/january/fredag-den-13de-och-tillval.html">Permalink</a>
+    <a href="http://krissiekmans.blogg.se/category/livet-i-allmanhet.html">Livet i allmänhet</a>
+    <a href="/2017/january/fredag-den-13de-och-tillval.html#comment">Kommentarer (0)</a>
+  <a href="/2017/january/fredag-den-13de-och-tillval.html#trackback">Trackbacks ()</a>
+  <br /><br />
+  
+    <a href="" rel="tag"></a>
+  
+   </div>
+   <hr class="separator" />
+  
+<div class="ad loop"></div>
+
+   <a name="a5884ef51ddf2b30ba2307547"></a>
+   <h3>Picasso</h3>
+   <div class="entrybody"><div>Idag i skolan gjorde vi en rolig övning. Rita picasso. Haha</div>
+<div> </div>
+<div>Man skulle se den man ritade av i ögonen. Man fick inte titta ner på pappret förren man var klar. </div>
+<div>Det var väldigt klurigt för man är ju van att titta ner. Men det var riktigt kul samtidigt.  :)</div>
+<div> </div>
+<div>
+<div><img src="https://cdn1.cdnme.se/1627688/8-3/5fc94f54df98d50bfae9b1807f3c5272_5884ef122a6b22689a7cb704.jpg" alt="" class="image" data-oid="5884ef122a6b22689a7cb704" /></div>
+<div> </div>
+<div>Inget är ju där det ska vara. (bild lånat från google)</div>
+</div></div>
+   <div class="entrymeta">
+    2017-01-12 @ 15:43:00
+    <a href="/2017/january/picasso.html">Permalink</a>
+    <a href="http://krissiekmans.blogg.se/category/livet-i-allmanhet.html">Livet i allmänhet</a>
+    <a href="/2017/january/picasso.html#comment">Kommentarer (0)</a>
+  <a href="/2017/january/picasso.html#trackback">Trackbacks ()</a>
+  <br /><br />
+  
+    <a href="" rel="tag"></a>
+  
+   </div>
+   <hr class="separator" />
+  
+<div class="ad loop"></div>
+
+   <a name="a5884ee669606ee67873f338b"></a>
+   <h3>Skolstart + ögonläkare</h3>
+   <div class="entrybody"><div>Idag började både jag och Elicia skolan igen. Jag åkte med Didar till skolan.</div>
+<div>Några kända ansikten i klassen. </div>
+<div>Till lunch gick jag och Anna och käkade sushi.</div>
+<div> </div>
+<div>Väntade in Fredrik och Elicia då vi skulle till ögonkliniken på sista kollen. </div>
+<div>Synen hade blivit lite bättre. Men läkaren skrev ut ett nytt recept då hennes glasögon var repiga. </div>
+<div>Så det ska fixas nya.</div>
+<div> </div>
+<div>
+<div><img src="https://cdn1.cdnme.se/1627688/8-3/fb_img_1484134252201_5884ee552a6b229ef676cfce.jpg" alt="" class="image" data-oid="5884ee552a6b229ef676cfce" /></div>
+<div> </div>
+</div></div>
+   <div class="entrymeta">
+    2017-01-11 @ 18:39:00
+    <a href="/2017/january/skolstart-ogonlakare.html">Permalink</a>
+    <a href="http://krissiekmans.blogg.se/category/livet-i-allmanhet.html">Livet i allmänhet</a>
+    <a href="/2017/january/skolstart-ogonlakare.html#comment">Kommentarer (0)</a>
+  <a href="/2017/january/skolstart-ogonlakare.html#trackback">Trackbacks ()</a>
+  <br /><br />
+  
+    <a href="" rel="tag"></a>
+  
+   </div>
+   <hr class="separator" />
+  
+<div class="ad loop"></div>
+
+   <a name="a5884ecd99606ee678bbe71aa"></a>
+   <h3>Lära Elicia vika</h3>
+   <div class="entrybody"><div>Ikväll har jag lärt Elicia att vika origami fjärilar. Hon lärde sig fort. </div>
+<div> </div>
+<div>
+<div><img src="https://cdn1.cdnme.se/1627688/8-3/dsc_0369_5884ec822a6b2268a0161310.jpg" alt="" class="image" data-oid="5884ec822a6b2268a0161310" /> <img src="https://cdn1.cdnme.se/1627688/8-3/dsc_0370_5884ec86e087c308193d8980.jpg" alt="" class="image" data-oid="5884ec86e087c308193d8980" /></div>
+<div>
+<div> <img src="https://cdn1.cdnme.se/1627688/8-3/dsc_0371_5884ec8b2a6b22bc3d775fe7.jpg" alt="" class="image" data-oid="5884ec8b2a6b22bc3d775fe7" /></div>
+<div>
+<div>Själv har jag börjat med att vika lite mindre fjärilar. Det kommer att bli 60st när jag är klar. </div>
+</div>
+</div>
+</div></div>
+   <div class="entrymeta">
+    2017-01-08 @ 18:32:00
+    <a href="/2017/january/lara-elicia-vika.html">Permalink</a>
+    <a href="http://krissiekmans.blogg.se/category/pyssligt.html">Pyssligt</a>
+    <a href="/2017/january/lara-elicia-vika.html#comment">Kommentarer (0)</a>
+  <a href="/2017/january/lara-elicia-vika.html#trackback">Trackbacks ()</a>
+  <br /><br />
+  
+    <a href="" rel="tag"></a>
+  
+   </div>
+   <hr class="separator" />
+  
+<div class="ad loop"></div>
+
+   <a name="a58793a58e087c362185f4a37"></a>
+   <h3>Fjärilar och rosetter</h3>
+   <div class="entrybody"><div>Igår kväll och idag har jag gjort dessa. </div>
+<div>Så nu har jag för dekoration av böcker ett tag framöver.</div>
+<div> </div>
+<div>
+<div><img src="https://cdn1.cdnme.se/1627688/8-3/dsc_0363_58793a19ddf2b35c6056053f.jpg" alt="" class="image" data-oid="58793a19ddf2b35c6056053f" /> <img src="https://cdn1.cdnme.se/1627688/8-3/dsc_0364_58793a1de087c3622f7eda5c.jpg" alt="" class="image" data-oid="58793a1de087c3622f7eda5c" /></div>
+<div>
+<div> </div>
+</div>
+</div></div>
+   <div class="entrymeta">
+    2017-01-07 @ 18:36:00
+    <a href="/2017/january/fjarilar-och-rosetter.html">Permalink</a>
+    <a href="http://krissiekmans.blogg.se/category/pyssligt.html">Pyssligt</a>
+    <a href="/2017/january/fjarilar-och-rosetter.html#comment">Kommentarer (0)</a>
+  <a href="/2017/january/fjarilar-och-rosetter.html#trackback">Trackbacks ()</a>
+  <br /><br />
+  
+    <a href="" rel="tag"></a>
+  
+   </div>
+   <hr class="separator" />
+  
+<div class="ad loop"></div>
+
+   <a name="a587939cfddf2b35c32956b43"></a>
+   <h3>Godmorgon eller gomiddag kanske!</h3>
+   <div class="entrybody"><div>Råkade visst sova bort nästan hela dagen. Fredrik behövde det garanterat. </div>
+<div>Han brukar vakna tidigt på helgerna men han vaknade runt 12. Så vi sov i ca 12 timmar. </div>
+<div>Inte alls behövligt. Haha.</div>
+<div><img src="http://minbebis.com/blogg/soontobe/files/2012/07/sovmorgon1.jpg" alt="Bildresultat för sovmorgon" /></div></div>
+   <div class="entrymeta">
+    2017-01-07 @ 12:45:00
+    <a href="/2017/january/godmorgon-eller-gomiddag-kanske.html">Permalink</a>
+    <a href="http://krissiekmans.blogg.se/category/livet-i-allmanhet.html">Livet i allmänhet</a>
+    <a href="/2017/january/godmorgon-eller-gomiddag-kanske.html#comment">Kommentarer (0)</a>
+  <a href="/2017/january/godmorgon-eller-gomiddag-kanske.html#trackback">Trackbacks ()</a>
+  <br /><br />
+  
+    <a href="" rel="tag"></a>
+  
+   </div>
+   <hr class="separator" />
+  
+<div class="ad loop"></div>
+
+   <a name="a5879389f2a6b22a65cb82b9f"></a>
+   <h3>Skumbad</h3>
+   <div class="entrybody"><div>Njöt i badkaret under 1h. </div>
+<div>Skumbad och avslappning. Awesome.</div>
+<div> </div>
+<div>Ingen som säger "mamma, kan du hjälp mig" osv. </div>
+<div>Helt lugnt och skönt!</div>
+<div> </div>
+<div>
+<div><img src="https://cdn3.cdnme.se/1627688/8-3/dsc_0362_58793886e087c362238a898f.jpg" alt="" class="image" data-oid="58793886e087c362238a898f" /></div>
+<div> </div>
+</div></div>
+   <div class="entrymeta">
+    2017-01-06 @ 20:29:00
+    <a href="/2017/january/skumbad.html">Permalink</a>
+    <a href="http://krissiekmans.blogg.se/category/livet-i-allmanhet.html">Livet i allmänhet</a>
+    <a href="/2017/january/skumbad.html#comment">Kommentarer (0)</a>
+  <a href="/2017/january/skumbad.html#trackback">Trackbacks ()</a>
+  <br /><br />
+  
+    <a href="" rel="tag"></a>
+  
+   </div>
+   <hr class="separator" />
+  
+<div class="ad loop"></div>
+
+   <a name="a5879374a9606ee3dff340c97"></a>
+   <h3>Rusta och hem</h3>
+   <div class="entrybody"><div>Jag och älsklingen åkte förbi Rusta för att kolla. Hittade lite på rean de hade. </div>
+<div>Julpapper, en canvastavla, pysselkalender till jul, sen köpte vi chips och ostbågar till kvällen.</div>
+<div> </div>
+<div>Vi hade en underbar himmel att titta på under resan hem till Oxelösund. </div>
+<div> </div>
+<div>
+<div style="text-align: center;"><img src="https://cdn1.cdnme.se/1627688/8-3/dsc_0360_58793718ddf2b35ce1d759b8.jpg" alt="" class="image" data-oid="58793718ddf2b35ce1d759b8" /> <img src="https://cdn1.cdnme.se/1627688/8-3/dsc_0361_58793714e087c361cf7e3c3d.jpg" alt="" class="image" data-oid="58793714e087c361cf7e3c3d" /></div>
+<div>
+<div> </div>
+</div>
+</div></div>
+   <div class="entrymeta">
+    2017-01-06 @ 15:23:00
+    <a href="/2017/january/rusta-och-hem.html">Permalink</a>
+    <a href="http://krissiekmans.blogg.se/category/livet-i-allmanhet.html">Livet i allmänhet</a>
+    <a href="/2017/january/rusta-och-hem.html#comment">Kommentarer (0)</a>
+  <a href="/2017/january/rusta-och-hem.html#trackback">Trackbacks ()</a>
+  <br /><br />
+  
+    <a href="" rel="tag"></a>
+  
+   </div>
+   <hr class="separator" />
+  
+<div class="ad loop"></div>
+
+   <a name="a5879362dddf2b35d13dc3aad"></a>
+   <h3>Söta Tindra</h3>
+   <div class="entrybody"><div>Nu har vi precis åkt från Jonas och Johanna för att lämna Elicia. Tog lite kort med Tindra när hon inte ville vara med och leka med Elicia och Wilma. </div>
+<div> </div>
+<div>
+<div><img src="https://cdn2.cdnme.se/1627688/8-3/snapchat-1444767173_587935e7e087c361cf7e3c20.jpg" alt="" class="image" data-oid="587935e7e087c361cf7e3c20" /> <img src="https://cdn3.cdnme.se/1627688/8-3/snapchat-494692387_587935f12a6b22a5e217d7c1.jpg" alt="" class="image" data-oid="587935f12a6b22a5e217d7c1" /></div>
+<div>
+<div><img src="https://cdn3.cdnme.se/1627688/8-3/snapchat-651588266_587935f32a6b22a704e41164.jpg" alt="" class="image" data-oid="587935f32a6b22a704e41164" /> <img src="https://cdn1.cdnme.se/1627688/8-3/snapchat-1334543854_587935f59606ee3e333123b1.jpg" alt="" class="image" data-oid="587935f59606ee3e333123b1" /></div>
+<div>
+<div> </div>
+</div>
+</div>
+</div></div>
+   <div class="entrymeta">
+    2017-01-06 @ 12:04:00
+    <a href="/2017/january/sota-tindra.html">Permalink</a>
+    <a href="http://krissiekmans.blogg.se/category/livet-i-allmanhet.html">Livet i allmänhet</a>
+    <a href="/2017/january/sota-tindra.html#comment">Kommentarer (0)</a>
+  <a href="/2017/january/sota-tindra.html#trackback">Trackbacks ()</a>
+  <br /><br />
+  
+    <a href="" rel="tag"></a>
+  
+   </div>
+   <hr class="separator" />
+  
+<div class="ad loop"></div>
+
+   <a name="a587931b52a6b22a6367efe6b"></a>
+   <h3>På väg mot Strängnäs</h3>
+   <div class="entrybody"><div>Härliga vinterlandskap.</div>
+<div> </div>
+<div>Det är så vackert med snön som ligger på trädens grenar. </div>
+<div>Som jag skrev igår så ska ju Elicia till Monica över helgen för att hon ska på äventyr med Monica och Lina imorgon. </div>
+<div>Elicia fick en mysig julklapp av dom att de skulle åka och kolla på Disney On Ice i Globen. </div>
+<div> </div>
+<div>Så då passar vi på och träffa lite folk också.</div>
+<div> </div>
+<div>
+<div>
+<div style="text-align: center;"><img src="https://cdn1.cdnme.se/1627688/8-3/dsc_0358_587931702a6b22a63e135f08.jpg" alt="" class="image" data-oid="587931702a6b22a63e135f08" /> 
+<div><img src="https://cdn1.cdnme.se/1627688/8-3/dsc_0359_5879316cddf2b35c4ed8155d.jpg" alt="" class="image" data-oid="5879316cddf2b35c4ed8155d" /></div>
+<div> </div>
+</div>
+<div> </div>
+</div>
+</div></div>
+   <div class="entrymeta">
+    2017-01-06 @ 08:37:00
+    <a href="/2017/january/pa-vag-mot-strangnas.html">Permalink</a>
+    <a href="http://krissiekmans.blogg.se/category/resor.html">Resor</a>
+    <a href="/2017/january/pa-vag-mot-strangnas.html#comment">Kommentarer (0)</a>
+  <a href="/2017/january/pa-vag-mot-strangnas.html#trackback">Trackbacks ()</a>
+  <br /><br />
+  
+    <a href="" rel="tag"></a>
+  
+   </div>
+   <hr class="separator" />
+  
+<div class="ad loop"></div>
+
+   <a name="a587930b0e087c362053a460f"></a>
+   <h3>Bakat bröd</h3>
+   <div class="entrybody"><div>Idag har Elicia varit ute 2 gånger i kylan. Temperaturen ligger på 10 minus. </div>
+<div>Pulkan har hon haft i högsta hugg båda gångerna. </div>
+<div>Första gången kom hon in och hade iskalla händer och gick och la sig i sängen för att få upp värmen. </div>
+<div>Andra gången kom hon in för att et började bli mörkt men då hade hon bytt vantar till varmare och frös inte alls. </div>
+<div> </div>
+<div>Jag passade på att baka matbröd. Vanliga frallor blev det, dock misslyckade, men de går ju säkert att äta. </div>
+<div> </div>
+<div>Nu sitter jag och tittar på tonårsbossen. </div>
+<div>Imorn blir det att åka till Strängnäs för att lämna Elicia hos Monica över helgen. </div>
+<div> </div>
+<div><img src="http://www.xn--brdrecept-17a.nu/bilder/frallor.jpg" alt="Bildresultat för frallor" /></div>
+<div> </div>
+<div>(Bilden tagen från google)</div></div>
+   <div class="entrymeta">
+    2017-01-05 @ 20:55:00
+    <a href="/2017/january/bakat-brod.html">Permalink</a>
+    <a href="http://krissiekmans.blogg.se/category/livet-i-allmanhet.html">Livet i allmänhet</a>
+    <a href="/2017/january/bakat-brod.html#comment">Kommentarer (0)</a>
+  <a href="/2017/january/bakat-brod.html#trackback">Trackbacks ()</a>
+  <br /><br />
+  
+    <a href="" rel="tag"></a>
+  
+   </div>
+   <hr class="separator" />
+  
+<div class="ad loop"></div>
+
+   <a name="a58792f219606ee3e3e25a35d"></a>
+   <h3>Packat ner granen</h3>
+   <div class="entrybody"><div>Jepp, Precis som rubriken säger. </div>
+<div>Jag tröttnade på det blå skenet från granen nu efter ca 3 veckor eller något så nu åkte den ner. </div>
+<div>Den stod lite i vägen också. Men Elicias gran får stå tills julen åker ut. </div>
+<div> </div>
+<div>
+<div><img src="https://cdn3.cdnme.se/1627688/8-3/dsc_0262_58792f08ddf2b35c2e03aa9c.jpg" alt="" class="image" data-oid="58792f08ddf2b35c2e03aa9c" /></div>
+<div> </div>
+</div></div>
+   <div class="entrymeta">
+    2017-01-04 @ 20:48:00
+    <a href="/2017/january/packat-ner-granen.html">Permalink</a>
+    <a href="http://krissiekmans.blogg.se/category/livet-i-allmanhet.html">Livet i allmänhet</a>
+    <a href="/2017/january/packat-ner-granen.html#comment">Kommentarer (0)</a>
+  <a href="/2017/january/packat-ner-granen.html#trackback">Trackbacks ()</a>
+  <br /><br />
+  
+    <a href="" rel="tag"></a>
+  
+   </div>
+   <hr class="separator" />
+  
+<div class="ad loop"></div>
+
+   <a name="a58792e9cddf2b35ce1d75887"></a>
+   <h3>Spelade</h3>
+   <div class="entrybody"><div>Elicia har varit i sitt rum, spelat musik och lekt idag medans jag har suttit och spelat Assasins Creed 4. Black Flags eller vad det heter :P</div>
+<div> </div>
+<div>Har även blivit av med en del av de jag lagt ut för försäljning på fb. Vilket känns bra. Det är ju alltid bra att saker man inte använder kommer till användning av någon annan. Små summor som kan sparas till semestern i år. </div>
+<div> </div>
+<div>Blir ingen bild i detta inlägg heller. </div></div>
+   <div class="entrymeta">
+    2017-01-03 @ 20:46:00
+    <a href="/2017/january/spelade.html">Permalink</a>
+    <a href="http://krissiekmans.blogg.se/category/livet-i-allmanhet.html">Livet i allmänhet</a>
+    <a href="/2017/january/spelade.html#comment">Kommentarer (0)</a>
+  <a href="/2017/january/spelade.html#trackback">Trackbacks ()</a>
+  <br /><br />
+  
+    <a href="" rel="tag"></a>
+  
+   </div>
+   <hr class="separator" />
+  
+<div class="ad loop"></div>
+
+   <a name="a58792dd9ddf2b35c5be98c85"></a>
+   <h3>Kartonger</h3>
+   <div class="entrybody"><div>Har idag plockat upp 2-3 kartonger som jag har börjat gå igenom. </div>
+<div>Detta är ju kartonger som är mina från Strängnäs. </div>
+<div>Men har hittat en del som kan säljas, lite som kan kastas och en del som ska sparas men inte behöver vara framme. </div>
+<div> </div>
+<div>Det kommer vad jag tror bli en hel del som kan säljas. </div>
+<div> </div>
+<div>Har tyvärr inga bilder idag heller. För man brukar inte ta kort på detta :P </div>
+<div>hahaha</div></div>
+   <div class="entrymeta">
+    2017-01-02 @ 20:41:00
+    <a href="/2017/january/kartonger.html">Permalink</a>
+    <a href="http://krissiekmans.blogg.se/category/livet-i-allmanhet.html">Livet i allmänhet</a>
+    <a href="/2017/january/kartonger.html#comment">Kommentarer (0)</a>
+  <a href="/2017/january/kartonger.html#trackback">Trackbacks ()</a>
+  <br /><br />
+  
+    <a href="" rel="tag"></a>
+  
+   </div>
+   <hr class="separator" />
+  
+<div class="ad loop"></div>
+
+   <a name="a58792d0e9606ee3e4175ec6a"></a>
+   <h3>Räk och avokadoröra</h3>
+   <div class="entrybody"><div>Här kommer receptet på förrätten vi åt igår.</div>
+<div> </div>
+<div>Ingredienser:</div>
+<div>3-4 st avokado</div>
+<div>400 g skalade räkor</div>
+<div>1 citron</div>
+<div>vinäger</div>
+<div>olivolja</div>
+<div>dillkvistar</div>
+<div>salt och peppar efter smak</div>
+<div>2 msk majonnäs</div>
+<div> </div>
+<div>Först hackar man avokadon och lägg dom i en stor skål och salta efter smak, pressa sedan över citronsaft från en halv citron.</div>
+<div>Häll över olja och vinäger. Lägg sedan blandningen i glas. Hacka räkorna och lägg dessa över avokadoblaningen. Ta 2 skedar majonnäs ovanpå och strö på peppar. Dekorera med en dillkvist och en citronklyfta.</div>
+<div> </div>
+<div>
+<div><img src="https://cdn1.cdnme.se/1627688/8-3/dsc_0340_58792cebddf2b35c605603b7.jpg" alt="" style="display: block; margin-left: auto; margin-right: auto;" class="image" data-oid="58792cebddf2b35c605603b7" /></div>
+<div>
+<div><img src="https://cdn3.cdnme.se/1627688/8-3/dsc_0341_58792cef2a6b22a5d9c63e49.jpg" alt="" style="display: block; margin-left: auto; margin-right: auto;" class="image" data-oid="58792cef2a6b22a5d9c63e49" /></div>
+<div> </div>
+</div>
+</div></div>
+   <div class="entrymeta">
+    2017-01-01 @ 15:14:00
+    <a href="/2017/january/rak-och-avokadorora.html">Permalink</a>
+    <a href="http://krissiekmans.blogg.se/category/recept.html">Recept</a>
+    <a href="/2017/january/rak-och-avokadorora.html#comment">Kommentarer (0)</a>
+  <a href="/2017/january/rak-och-avokadorora.html#trackback">Trackbacks ()</a>
+  <br /><br />
+  
+    <a href="" rel="tag"></a>
+  
+   </div>
+   <hr class="separator" />
+  
+<div class="ad loop"></div>
+
+   <a name="a587926d82a6b22a64e97606e"></a>
+   <h3>2016 är nu slut och 2017 är här</h3>
+   <div class="entrybody"><div>Nu är äntligen detta år till enda. </div>
+<div>Har varit många kändisar som avlidit detta år. Hoppas nu att detta år blir bättre. </div>
+<div>2017 är möjligheternas år! Det ser jag framför mig iallafall.. </div>
+<div> </div>
+<div>Så en sammnfattning av året som gått...</div>
+<div> </div>
+<div>Året har erbjudit en del.. Elicia har varit med i Nyköpings gästabud, spelat upp en till föreställning med teatergruppen. Vi hade en underbar semesterresa där målet var Legoland i Danmark. </div>
+<div>Vi har köpt en lägenhet och vi har både renoverat och flyttat in i den. Elicia har eget rum. </div>
+<div>Det har varit en superbra år. Men tror att 2017 kommer bli ännu bättre. :)</div>
+<div> </div></div>
+   <div class="entrymeta">
+    2017-01-01 @ 00:13:00
+    <a href="/2017/january/2016-ar-nu-slut-och-2017-ar-har.html">Permalink</a>
+    <a href="http://krissiekmans.blogg.se/category/livet-i-allmanhet.html">Livet i allmänhet</a>
+    <a href="/2017/january/2016-ar-nu-slut-och-2017-ar-har.html#comment">Kommentarer (0)</a>
+  <a href="/2017/january/2016-ar-nu-slut-och-2017-ar-har.html#trackback">Trackbacks ()</a>
+  <br /><br />
+  
+    <a href="" rel="tag"></a>
+  
+   </div>
+   <hr class="separator" />
+  
+<div class="ad loop"></div>
+
+ </div>
+
+
+ <div id="banner">
+ <script type='text/javascript'>
+var googletag = googletag || {};
+googletag.cmd = googletag.cmd || [];
+(function() {
+var gads = document.createElement('script');
+gads.async = true;
+gads.type = 'text/javascript';
+var useSSL = 'https:' == document.location.protocol;
+gads.src = (useSSL ? 'https:' : 'http:') + 
+'//www.googletagservices.com/tag/js/gpt.js';
+var node = document.getElementsByTagName('script')[0];
+node.parentNode.insertBefore(gads, node);
+})();
+</script>
+<script type='text/javascript'>
+googletag.cmd.push(function() {
+googletag.defineSlot('/100191650/MKNetwork01-1-160x600', [160, 600], 'div-gpt-ad-1405951345152-0').addService(googletag.pubads());
+googletag.defineSlot('/100191650/MKNetwork01-2-160x600', [160, 600], 'div-gpt-ad-1405951541116-0').addService(googletag.pubads());
+googletag.enableServices();
+});
+</script>
+<div id='div-gpt-ad-1405951345152-0' style='width:160px; height:600px;'>
+<script type='text/javascript'>
+googletag.cmd.push(function() { googletag.display('div-gpt-ad-1405951345152-0'); });
+</script>
+</div>
+<div style="height: 5px;"></div>
+<div id='div-gpt-ad-1405951541116-0' style='width:160px; height:600px;'>
+<script type='text/javascript'>
+googletag.cmd.push(function() { googletag.display('div-gpt-ad-1405951541116-0'); });
+</script>
+</div>
+<div style="height: 5px;"></div>
+<a href="http://www.modekampanj.com/?utm_source=Krissi-Ekmans&amp;utm_medium=Banner&amp;utm_campaign=Modekampanj" rel="nofollow" sl-processed="1"><img src="https://cdn3.cdnme.se/1627688/6-3/banner_modekampanj_com_03_52794c88e087c3606a66cd5e.png" style="width:160px;"></a>
+</div>
+
+</div>
+
+<img src="http://stats.blogg.se/?id=1627688" border="0" width="0" height="0" alt="" />
+
+
+
+<script src='http://publishme.se/static/js/comments.js'></script><script type="text/javascript"> var  bloggId= '4fe5c770ddf2b36cdb011349'; var is_pro = false;</script>
+ <script type="text/javascript" src="/panorama.js"></script>
+<script src='https://static.blogg.se/public/js/metrics.js?id=4fe5c770ddf2b36cdb011349' type='text/javascript'></script>
+<script type='text/javascript'>
+    (function () {
+        var protocol = 'https:' === document.location.protocol ? 'https:' : 'http:';
+        var nuggjs = document.createElement('script'); nuggjs.type = 'text/javascript'; nuggjs.async = true;
+        nuggjs.src = '/static/nuggad.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(nuggjs, s);
+    })();
+</script><script>
+    if (window.loadAds){
+      window.loadAds();
+    }
+</script><script type='text/javascript' src='https://tcd.tourn.se/js/autoload.js'></script><script src="https://newstats.blogg.se/logger.js?4fe5c770ddf2b36cdb011349" width="0" height="0" alt="" async="true"></script>
+</body>
+</html>

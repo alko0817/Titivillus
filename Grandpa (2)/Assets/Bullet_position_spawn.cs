@@ -23,7 +23,8 @@ public class Bullet_position_spawn : MonoBehaviour
         if (Input.GetButtonDown("Fire1"))
         {
             Rigidbody2D bomb = Instantiate(bullet,  transform.position,  transform.rotation) as Rigidbody2D;
-            bomb.velocity = transform.TransformDirection(Vector3.right * 500);  // ballSpeed * ballPower);
+            bomb.velocity = transform.TransformDirection(Vector3.right * 500);
+            FindObjectOfType<AudioManager>().Play("shot"); // ballSpeed * ballPower);
            
           
         }
