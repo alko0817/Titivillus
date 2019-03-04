@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class beem_script : MonoBehaviour
 {
-    public float speed = 20;
+    public float speed  ;
     
     // Start is called before the first frame update
     void Start()
@@ -15,41 +15,29 @@ public class beem_script : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        StartCoroutine(blip());
-        transform.Translate(Vector3.down * Time.deltaTime * speed);
-      //  Destroy(gameObject, 30);
+        transform.Translate(Vector3.down /  speed);
+        Destroy(gameObject, 15);
     }
 
 
 
-
-    public void OnCollisionEnter2D(Collision2D other)
+    public void OnTriggerEnter2D(Collider2D other)
     {
-         if  (other.gameObject.tag == "f_solution" )
-            {
-            Destroy(gameObject);
-            FindObjectOfType<AudioManager>().Play("abd");
 
-        }
         if (other.gameObject.tag == "player2")
         {
-            Destroy(other.gameObject  );
-            FindObjectOfType<AudioManager>().Play("abd");
-
+           // Destroy(other.gameObject  );
+           // Destroy(gameObject);
         }
+        
 
-
-         if (other.gameObject.tag == "beem_position6")
+        
+        if (other.gameObject.tag == "player_")
         {
-            Destroy(gameObject );
+            Destroy(gameObject  );
 
         } 
-
-    }
-    IEnumerator blip()
-    {
-        yield return new WaitForSeconds(10);
-        Destroy(gameObject , 10);
+         
     }
 
     

@@ -29,7 +29,7 @@ public class EnemyKiller : MonoBehaviour
     }
 
 
-    public void OnCollisionEnter2D(Collision2D other)
+    public void OnTriggerEnter2D(Collider2D other)
     {
 
         if (other.gameObject.tag == "Enemy")
@@ -49,11 +49,7 @@ public class EnemyKiller : MonoBehaviour
 
         }
 
-
-
-
-
-
+         
 
         if (other.gameObject.tag == "Beem")
         {

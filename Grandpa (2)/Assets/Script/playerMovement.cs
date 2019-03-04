@@ -66,6 +66,7 @@ public class playerMovement : MonoBehaviour
         {
             if (Input.GetKeyUp(KeyCode.Alpha1))
             {
+                FindObjectOfType<AudioManager>().Play("boost");
                 playerSpeed = 4.0f;
                 StartCoroutine("PowerUpTimer");
                 nextcooldownTime = Time.time + cooldownTime;

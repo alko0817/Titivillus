@@ -28,8 +28,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3658358756367283342}
   m_LocalRotation: {x: -0, y: -0, z: 0.0062241475, w: 0.9999807}
-  m_LocalPosition: {x: 41.31, y: -4.94, z: 15.49}
-  m_LocalScale: {x: 4.5815997, y: 4.4055, z: 0}
+  m_LocalPosition: {x: 41.31, y: -4.94, z: 0}
+  m_LocalScale: {x: 7.563763, y: 4.4055, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -68,11 +68,11 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -336710217
+  m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e7a6ca24fca39864dabd25c31de35eec, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: d60214c8ddc10b244b5e2cd162b2f16f, type: 3}
+  m_Color: {r: 0.109069064, g: 0.972549, b: 0.95686275, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -118,8 +118,8 @@ MonoBehaviour:
   uf_o: {fileID: 2553685344057041785}
   f_m_1: {fileID: 4843647840077456797, guid: 4c888061f43122f469e1bf279ffff49a, type: 3}
   speed: 3
-  beem_destroy: {fileID: 8844383751411837873, guid: 8a7d84eaedef069438fb23c8f1c2cf58,
-    type: 3}
+  stop_moving: 0
+  move: 0
 --- !u!61 &5613124329668076342
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -130,7 +130,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.18897629, y: -0.41929203}

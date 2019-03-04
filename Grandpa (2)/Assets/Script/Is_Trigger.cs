@@ -13,6 +13,7 @@ public class Is_Trigger : MonoBehaviour
     public int count = 5;
     bool kill_f_m_all_f = false;
     public RawImage r1;
+    public bool move_it_up = false;
     /*public RawImage r1;
     public RawImage r2;
     public RawImage r3;
@@ -28,7 +29,11 @@ public class Is_Trigger : MonoBehaviour
     void Update()
     {
 
- 
+        if (move_it_up)
+        {
+
+            transform.Translate(Vector3.up * 2);
+        }
         // transform.Rotate(new Vector3(0, 90, 0) * Time.deltaTime * 1);
     }
     public void OnTriggerEnter2D(Collider2D other)
@@ -42,13 +47,17 @@ public class Is_Trigger : MonoBehaviour
             // if (count_wait_for_spawn_ufo > 20)
             // {  
 
-           // Text_Score.Score -= 1;
-            print(count);
-             
-            Destroy(gameObject);
+            // Text_Score.Score -= 1;
+
+            move_it_up = true;
+            Destroy(gameObject, 4);
             Destroy(other.gameObject);
+            Destroy(r1.gameObject , 4 );
+
+
+
             Text_Score.Score -= 1;
-            Destroy(r1.gameObject);
+            
             //  Destroy(gameObject.tag = "F_m");
             //  Destroy(collision.gameObject, 15);
 

@@ -6,7 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class Trigger_3 : MonoBehaviour
 {
-    public RawImage r3; 
+    public RawImage r3;
+    public bool move_it_up = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,7 +17,15 @@ public class Trigger_3 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
+
+
+
+        if (move_it_up)
+        {
+
+            transform.Translate(Vector3.up * 2);
+        }
     }
 
 
@@ -34,9 +43,13 @@ public class Trigger_3 : MonoBehaviour
 
             // Text_Score.Score -= 1;
 
-            Destroy(gameObject);
+
+            move_it_up = true;
+            Destroy(gameObject, 4);
             Destroy(other.gameObject);
-            Destroy(r3.gameObject);
+            Destroy(r3.gameObject ,4);
+
+            
             //  Destroy(gameObject.tag = "F_m");
             //  Destroy(collision.gameObject, 15);
 

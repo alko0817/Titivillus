@@ -10,6 +10,7 @@ public class Trigger_2 : MonoBehaviour
 {
     public int trigger_2 = 0;
     public RawImage r2;
+    public bool move_it_up = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,7 +19,11 @@ public class Trigger_2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (move_it_up)
+        {
+
+            transform.Translate(Vector3.up * 2);
+        }
     }
 
 
@@ -35,9 +40,13 @@ public class Trigger_2 : MonoBehaviour
 
             // Text_Score.Score -= 1;
 
-            Destroy(gameObject);
+            move_it_up = true;
+            Destroy(gameObject, 4);
             Destroy(other.gameObject);
-            Destroy(r2.gameObject);
+            Destroy(r2.gameObject ,4);
+
+
+             
             //  Destroy(gameObject.tag = "F_m");
             //  Destroy(collision.gameObject, 15);
 

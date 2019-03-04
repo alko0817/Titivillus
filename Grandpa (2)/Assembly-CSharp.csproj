@@ -68,6 +68,7 @@
     <Compile Include="Assets\Destroy_bullet2.cs" />
     <Compile Include="Assets\Light_Destroy.cs" />
     <Compile Include="Assets\NewBehaviourScript.cs" />
+    <Compile Include="Assets\OnlyHope.cs" />
     <Compile Include="Assets\outbound.cs" />
     <Compile Include="Assets\people_movemetn.cs" />
     <Compile Include="Assets\people_script.cs" />

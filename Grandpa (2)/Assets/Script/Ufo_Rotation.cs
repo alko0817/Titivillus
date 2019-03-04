@@ -8,7 +8,8 @@ public class Ufo_Rotation : MonoBehaviour
     public Transform f_m_1;
     public float speed = 100;
     public bool stop_moving = false ;
-    public bool move = false;
+    public  bool move = false;
+    public static bool move_up = false; 
     // Start is called before the first frame update
     void Start()
     {
@@ -30,12 +31,24 @@ public class Ufo_Rotation : MonoBehaviour
        
        // Destroy(gameObject, 35);
 
-        if (stop_moving)
+
+
+        if (move)
         {
-            transform.Translate(Vector3.down * 0 );
+
+            transform.Translate(Vector3.down * 0);
+            StartCoroutine(fly());
+            
         }
 
-        StartCoroutine(fly());
+       /* if (move_up)
+        {
+            transform.Translate(Vector3.up * 2 );
+            //  move_up = false;
+            
+        }
+        */
+        
        
 
     }
@@ -43,11 +56,11 @@ public class Ufo_Rotation : MonoBehaviour
     {
          
 
-            if (other.gameObject.tag == "Bullet1")
+       /*     if (other.gameObject.tag == "Bullet1")
         {
             Destroy(gameObject , 3  );
             Destroy(other.gameObject );
-        }
+        }*/
 
         if (other.gameObject.tag == "player_")
         {
@@ -58,9 +71,11 @@ public class Ufo_Rotation : MonoBehaviour
 
         if (other.gameObject.tag == "Beem_position")
         {
-         //   Destroy(gameObject);
-            stop_moving = true;
-            move = true;
+            //   Destroy(gameObject);
+            // move_up= true;
+           move = true;
+            move_up = true;
+           // move_up = true;
             //  Destroy(other.gameObject);
         }
 
@@ -73,16 +88,19 @@ public class Ufo_Rotation : MonoBehaviour
               Destroy(other.gameObject);
           }*/
     }
-    IEnumerator fly()
+     IEnumerator fly()
     {
-        yield return new WaitForSeconds(20);
-        if (stop_moving)
-        {
+        yield return new WaitForSeconds(6);
+       
             transform.Translate(Vector3.up * 2);
-        }
-    }
- 
 
+       
+        yield return new WaitForSeconds(5);
+        move = false;
+        
+    }  
+ 
+    
 
 
 }
