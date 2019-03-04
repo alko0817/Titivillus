@@ -1,0 +1,99 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Enemy1
+  - redEnemy
+  - bullet1
+  - Bullet1
+  - blueBullet
+  - RedBullet
+  - GreenBullet
+  - Enemy2
+  - FamilyMember1
+  - F_m
+  - Ufo
+  - F_m1
+  - F_m2
+  - F_m3
+  - F_m4
+  - F_m5
+  - F_m6
+  - F_m7
+  - Enemy_original
+  - Enemy
+  - position_0_1
+  - position_1
+  - spawn_enemy_position_2
+  - spawn_enemy_position_3
+  - spawn_enemy_position_4
+  - spawn_enemy_position_5
+  - spawn_enemy_position_6
+  - Beem
+  - player_
+  - f_solution6
+  - Wall
+  - beem_position6
+  - f_solution
+  - player2
+  - Beem_position
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - layer2
+  - layer3
+  - layer4
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: RandomShit
+    uniqueID: 1358917795
+    locked: 0
+  - name: Background
+    uniqueID: 120934351
+    locked: 0
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Player
+    uniqueID: 1767399297
+    locked: 0
+  - name: Enemies
+    uniqueID: 3259521935
+    locked: 0
+  - name: Ufos
+    uniqueID: 3958257079
+    locked: 0
+  - name: Members
+    uniqueID: 835597009
+    locked: 0
+  - name: Foreground
+    uniqueID: 1568846831
+    locked: 0
